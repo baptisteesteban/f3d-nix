@@ -1,13 +1,30 @@
 {
   perSystem = {pkgs, ...}: {
     devShells.default = pkgs.mkShell {
-      packages = with pkgs; [
+      nativeBuildInputs = with pkgs; [
         cmake
         pkg-config
-        vtk_9_6
-        libxcb.dev
-        libxcursor
       ];
+
+      buildInputs = with pkgs; [
+        vtk
+
+        libGL
+        libGLU
+        libXcursor
+        xcbutil
+        libxcb
+
+        ninja
+        git
+      ];
+
+      shellHook = with pkgs; ''
+        export LD_LIBRARY_PATH=${lib.makeLibraryPath [
+          libGL
+          libGLU
+        ]}:$LD_LIBRARY_PATH
+      '';
     };
   };
 }
