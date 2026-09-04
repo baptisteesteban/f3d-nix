@@ -1,23 +1,11 @@
 {
-  perSystem = {pkgs, ...}: {
+  perSystem = {
+    self',
+    pkgs,
+    ...
+  }: {
     devShells.default = pkgs.mkShell {
-      nativeBuildInputs = with pkgs; [
-        cmake
-        pkg-config
-      ];
-
-      buildInputs = with pkgs; [
-        vtk
-
-        libGL
-        libGLU
-        libXcursor
-        xcbutil
-        libxcb
-
-        ninja
-        git
-      ];
+      inputsFrom = [self'.packages.f3d];
 
       shellHook = with pkgs; ''
         export LD_LIBRARY_PATH=${lib.makeLibraryPath [
