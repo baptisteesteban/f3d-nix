@@ -25,12 +25,14 @@
         ];
 
       buildInputs = with pkgs; [
-        vtk
+        onetbb # TODO: move in propagatedBuildInputs of vtk
+        libx11 # TODO: move in propagatedBuildInputs of vtk
         libGL
         libGLU
         libXcursor
         xcbutil
         libxcb
+        self'.packages.vtk
       ];
 
       enableParallelBuilding = true;
