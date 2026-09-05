@@ -1,5 +1,9 @@
 {
-  perSystem = {self', pkgs, ...}: {
+  perSystem = {
+    self',
+    pkgs,
+    ...
+  }: {
     packages.ospray = pkgs.stdenv.mkDerivation rec {
       name = "OSPRay";
       version = "3.2.0";

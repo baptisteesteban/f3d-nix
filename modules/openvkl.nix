@@ -1,5 +1,9 @@
 {
-  perSystem = {self', pkgs, ...}: {
+  perSystem = {
+    self',
+    pkgs,
+    ...
+  }: {
     packages.openvkl = pkgs.stdenv.mkDerivation rec {
       pname = "openvkl";
       version = "2.0.2";
