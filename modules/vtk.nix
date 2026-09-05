@@ -21,6 +21,7 @@
       buildInputs = with pkgs; [
         onetbb
         libGL
+        libx11
         self'.packages.ospray
       ];
 
